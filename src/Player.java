@@ -31,12 +31,13 @@ public class Player {
         }
     }
 
+
     public void update(InputManager inputManager){
         //region movement
         int ySpeed = 0;
-        if(inputManager.down.isPressed()){
+        if(inputManager.p1down.isPressed()){
             ySpeed =4;
-        }else if(inputManager.up.isPressed()){
+        }else if(inputManager.p1up.isPressed()){
             ySpeed =-4;
         }
         int xSpeed = 0;
@@ -59,5 +60,8 @@ public class Player {
         //draw sprite example
         g.drawImage(sprite, hitBox.x,hitBox.y,hitBox.width,hitBox.height,null);
 
+    }
+    public Rectangle getHitbox(){
+        return hitBox;
     }
 }

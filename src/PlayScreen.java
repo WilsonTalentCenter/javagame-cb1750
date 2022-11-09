@@ -9,11 +9,13 @@ import java.awt.event.KeyEvent;
  */
 public class PlayScreen extends Screen{
     private Player player;
-    private Player player2;
+    private Player2 player2;
+    private GameBall ball;
     private InputManager inputManager;
     public PlayScreen() {
         player = new Player();
-        player2 = new Player(1800,600,25,400);
+        player2 = new Player2();
+        ball = new GameBall();
         inputManager = new InputManager(); // holds the state for all of the inputs
     }
 
@@ -37,12 +39,15 @@ public class PlayScreen extends Screen{
         inputManager.update();
         player.update(inputManager);
         player2.update(inputManager);
+        ball.update(inputManager,player,player2,ball);
     }
 
     @Override
     public void draw(Graphics g) {
         player.draw(g);
         player2.draw(g);
+        ball.draw(g);
+
         //draw words example:
         g.drawString("My score: ", 10, 20);
     }

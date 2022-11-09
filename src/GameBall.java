@@ -5,40 +5,36 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by dbaker on 1/8/2022.
+ * Created by cb1750 on 11/9/2022.
  */
-public class Player2 {
+public class GameBall {
     private Rectangle hitBox;
     private BufferedImage sprite;
+    static int xSpeed = 4;
+    static int ySpeed = 0;
 
-
-
-    public Player2(){
-        hitBox = new Rectangle(1800,600,25,400);
+    public GameBall(){
+        hitBox = new Rectangle(1000,500,50,50);
         try {
             sprite = ImageIO.read(new File("src/resources/player.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
-    public void update(InputManager inputManager){
+    public void update(InputManager inputManager, Player player, Player2 player2, GameBall ball){
         //region movement
-        int ySpeed = 0;
-        if(inputManager.p2down.isPressed()){
-            ySpeed =4;
-        }else if(inputManager.p2up.isPressed()){
-            ySpeed =-4;
-        }
-        int xSpeed = 0;
-        /*if(inputManager.left.isPressed()){
-            xSpeed =-4;
-        }else if(inputManager.right.isPressed()){
+
+
+        if(Collision.player1HaveCollided(player,ball)){
             xSpeed = 4;
         }
+        else if(Collision.player2HaveCollided(player2,ball)){
+            xSpeed = -4;
+        }
+
+
         hitBox.x += xSpeed;
-        */
+
         hitBox.y += ySpeed;
 
         //endregion
@@ -47,12 +43,13 @@ public class Player2 {
         //endregion
 
     }
+    public Rectangle getHitbox(){
+        return hitBox;
+    }
+
     public void draw(Graphics g){
         //draw sprite example
         g.drawImage(sprite, hitBox.x,hitBox.y,hitBox.width,hitBox.height,null);
 
-    }
-    public Rectangle getHitbox(){
-        return hitBox;
     }
 }

@@ -1,27 +1,32 @@
 import java.awt.event.KeyEvent;
+import java.security.Key;
 
 /**
  * Created by dbaker on 1/8/2022.
  */
 public class InputManager {
-    public KeyInputState up;
-    public KeyInputState down;
+    public KeyInputState p1up;
+    public KeyInputState p1down;
+    public KeyInputState p2up;
+    public KeyInputState p2down;
     public KeyInputState left;
     public KeyInputState right;
 
     public InputManager(){
-        up = new KeyInputState();
-        down = new KeyInputState();
+        p1up = new KeyInputState();
+        p1down = new KeyInputState();
+        p2up = new KeyInputState();
+        p2down = new KeyInputState();
         left = new KeyInputState();
         right = new KeyInputState();
     }
 
     public void keyPressed(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_W){
-            up.pressed();
+            p1up.pressed();
         }
         if(e.getKeyCode() == KeyEvent.VK_UP){
-            up.pressed();
+            p2up.pressed();
         }
         if(e.getKeyCode() == KeyEvent.VK_A){
             left.pressed();
@@ -30,10 +35,10 @@ public class InputManager {
             left.pressed();
         }
         if(e.getKeyCode() == KeyEvent.VK_S){
-            down.pressed();
+            p1down.pressed();
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
-            down.pressed();
+            p2down.pressed();
         }
         if(e.getKeyCode() == KeyEvent.VK_D){
             right.pressed();
@@ -46,10 +51,10 @@ public class InputManager {
 
     public void keyReleased(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_W){
-            up.released();
+            p1up.released();
         }
         if(e.getKeyCode() == KeyEvent.VK_UP){
-            up.released();
+            p2up.released();
         }
         if(e.getKeyCode() == KeyEvent.VK_A){
             left.released();
@@ -58,10 +63,10 @@ public class InputManager {
             left.released();
         }
         if(e.getKeyCode() == KeyEvent.VK_S){
-            down.released();
+            p1down.released();
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
-            down.released();
+            p2down.released();
         }
         if(e.getKeyCode() == KeyEvent.VK_D){
             right.released();
@@ -71,9 +76,12 @@ public class InputManager {
         }
     }
     public void update(){
-        up.update();
+        p1up.update();
+        p1down.update();
+        p2up.update();
+        p2down.update();
         left.update();
         right.update();
-        down.update();
+
     }
 }
