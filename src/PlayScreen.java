@@ -49,7 +49,7 @@ public class PlayScreen extends Screen{
         ball.draw(g);
 
         //draw words example:
-        g.drawString("My score: ", 10, 20);
+        g.drawString("Player1 score: ", 500, 20);
     }
 
     @Override

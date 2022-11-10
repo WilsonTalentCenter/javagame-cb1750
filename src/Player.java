@@ -14,12 +14,13 @@ public class Player {
 
 
     public Player(){
-        hitBox = new Rectangle(100,600,25,400);
+        hitBox = new Rectangle(100,600,25,200);
         try {
-            sprite = ImageIO.read(new File("src/resources/player.jpg"));
+            sprite = ImageIO.read(new File("src/resources/white.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
     }
     public Player(int x,int y,int width,int height){

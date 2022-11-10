@@ -16,7 +16,7 @@ public class GameBall {
     public GameBall(){
         hitBox = new Rectangle(1000,500,50,50);
         try {
-            sprite = ImageIO.read(new File("src/resources/player.jpg"));
+            sprite = ImageIO.read(new File("src/resources/ball2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -25,12 +25,33 @@ public class GameBall {
         //region movement
 
 
-        if(Collision.player1HaveCollided(player,ball)){
-            xSpeed = 4;
+        if(Collision.player1HaveCollided(player,ball)==1){
+            xSpeed = 8;
+            ySpeed = -2;
         }
-        else if(Collision.player2HaveCollided(player2,ball)){
-            xSpeed = -4;
+        else if(Collision.player2HaveCollided(player2,ball)==1){
+            xSpeed = -8;
+            ySpeed = -2;
         }
+        else if(Collision.player1HaveCollided(player,ball)==2){
+            xSpeed = 8;
+            ySpeed = -1;
+        }
+        else if(Collision.player2HaveCollided(player2,ball)==2){
+            xSpeed = -8;
+            ySpeed = 1;
+        }
+        else if(Collision.player1HaveCollided(player,ball)==3){
+            xSpeed = 8;
+            ySpeed = 2;
+        }
+        else if(Collision.player2HaveCollided(player2,ball)==3){
+            xSpeed = -8;
+            ySpeed = 2;
+        }
+
+
+
 
 
         hitBox.x += xSpeed;

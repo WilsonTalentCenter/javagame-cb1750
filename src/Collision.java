@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+import java.util.*;
 
 
 /**
@@ -18,13 +18,40 @@ public class Collision {
 
         }
 
-    public static boolean player1HaveCollided(Player player, GameBall ball){
-        return (player.getHitbox().intersects(ball.getHitbox()));
+    public static int player1HaveCollided(Player player, GameBall ball){
+        if (player.getHitbox().intersects(ball.getHitbox())){
+            if (player.getHitbox().getY() >= 200 ){
+                return 1;  //Returns 1 if ball hits top of rectangle
+            }
+            else if (player.getHitbox().getY() >= 400  ){
+                return 2; //Returns 2 if ball hits middle of rectangle
+            }
+            else{
+                return 3;  //Returns 3 if ball hits bottom of rectangle
+            }
+        }
+        else{
+            return 0;
+        }
 
     }
-    public static boolean player2HaveCollided( Player2 player2, GameBall ball){
-        return (player2.getHitbox().intersects(ball.getHitbox()));
+    public static int player2HaveCollided( Player2 player2, GameBall ball){
+        if (player2.getHitbox().intersects(ball.getHitbox())){
+            if (player2.getHitbox().getY() >= 200 ){
+                return 1;  //Returns 1 if ball hits top of rectangle
+            }
+            else if (player2.getHitbox().getY() >= 400  ){
+                return 2; //Returns 2 if ball hits middle of rectangle
+            }
+            else{
+                return 3;  //Returns 3 if ball hits bottom of rectangle
+            }
+        }
+        else {
+            return 0;
+        }
 
     }
+
 
 }
