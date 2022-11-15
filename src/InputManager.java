@@ -11,6 +11,7 @@ public class InputManager {
     public KeyInputState p2down;
     public KeyInputState left;
     public KeyInputState right;
+    public KeyInputState space;
 
     public InputManager(){
         p1up = new KeyInputState();
@@ -19,6 +20,7 @@ public class InputManager {
         p2down = new KeyInputState();
         left = new KeyInputState();
         right = new KeyInputState();
+        space = new KeyInputState();
     }
 
     public void keyPressed(KeyEvent e){
@@ -45,6 +47,9 @@ public class InputManager {
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             right.pressed();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            space.pressed();
         }
     }
 
@@ -74,6 +79,10 @@ public class InputManager {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             right.released();
         }
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            space.released();
+        }
+
     }
     public void update(){
         p1up.update();
@@ -82,6 +91,7 @@ public class InputManager {
         p2down.update();
         left.update();
         right.update();
+        space.update();
 
     }
 }

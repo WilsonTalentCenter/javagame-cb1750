@@ -25,21 +25,33 @@ public class Player2 {
 
     public void update(InputManager inputManager){
         //region movement
+
         int ySpeed = 0;
-        if(inputManager.p2down.isPressed()){
-            ySpeed =4;
-        }else if(inputManager.p2up.isPressed()){
-            ySpeed =-4;
+
+
+
+        if (inputManager.p2down.isPressed()) {
+
+            ySpeed = 4;
+        } else if (inputManager.p2up.isPressed()) {
+
+            ySpeed = -4;
         }
-        int xSpeed = 0;
-        /*if(inputManager.left.isPressed()){
-            xSpeed =-4;
-        }else if(inputManager.right.isPressed()){
-            xSpeed = 4;
-        }
-        hitBox.x += xSpeed;
-        */
+
+
+
+
+
         hitBox.y += ySpeed;
+
+        if(hitBox.y<0){
+            hitBox.y=0;
+        }
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height =(int) screenSize.getHeight();
+        if(hitBox.y + hitBox.height > height){
+            hitBox.y = height - hitBox.height;
+        }
 
         //endregion
         //region collision

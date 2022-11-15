@@ -20,6 +20,7 @@ public class Game {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width =(int) screenSize.getWidth();
         int height =(int) screenSize.getHeight();
+        Rectangle screenHitBox = new Rectangle(width,height);
         frame.add(screenManager);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width, height);

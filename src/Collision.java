@@ -1,29 +1,31 @@
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
 
 
 /**
  * Created by cb1750 on 11/9/2022.
  */
 public class Collision {
-    private Rectangle hitBox;
-    private BufferedImage sprite;
+    private static Rectangle upperHitBox;
+    private static Rectangle lowerHitBox;
+
 
     public Collision( Player player, Player player2, GameBall ball){
+        upperHitBox = new Rectangle(0,0,2500,100);
+        lowerHitBox = new Rectangle(0,1000,2500,-100);
+
+    }
 
 
-        }
+
+
+
 
     public static int player1HaveCollided(Player player, GameBall ball){
-        if (player.getHitbox().intersects(ball.getHitbox())){
-            if (player.getHitbox().getY() >= 200 ){
+        if (player.getHitBox().intersects(ball.getHitBox())){
+            if (player.getHitBox().getY() <= 200 ){
                 return 1;  //Returns 1 if ball hits top of rectangle
             }
-            else if (player.getHitbox().getY() >= 400  ){
+            else if (player.getHitBox().getY() <= 400  ){
                 return 2; //Returns 2 if ball hits middle of rectangle
             }
             else{
@@ -36,7 +38,7 @@ public class Collision {
 
     }
     public static int player2HaveCollided( Player2 player2, GameBall ball){
-        if (player2.getHitbox().intersects(ball.getHitbox())){
+        if (player2.getHitbox().intersects(ball.getHitBox())){
             if (player2.getHitbox().getY() >= 200 ){
                 return 1;  //Returns 1 if ball hits top of rectangle
             }

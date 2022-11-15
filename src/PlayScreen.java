@@ -17,6 +17,7 @@ public class PlayScreen extends Screen{
         player2 = new Player2();
         ball = new GameBall();
         inputManager = new InputManager(); // holds the state for all of the inputs
+
     }
 
     @Override
@@ -49,7 +50,10 @@ public class PlayScreen extends Screen{
         ball.draw(g);
 
         //draw words example:
-        g.drawString("Player1 score: ", 500, 20);
+        g.drawString("Player1 score: "+GameBall.p1Score, 500, 20);
+        g.drawString("Player2 score: "+GameBall.p2Score, 1500, 20);
+        g.setColor(Color.white);
+
     }
 
     @Override
