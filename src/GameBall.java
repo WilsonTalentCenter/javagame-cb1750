@@ -33,31 +33,23 @@ public class GameBall {
                    xSpeed = -4;
 
         }
+        //If there is a collision this makes the ball faster and makes it move toward the other player
+        if(Collision.player1HaveCollided(player,ball)){
+            xSpeed = (Math.abs(xSpeed)+1);
+            if(ySpeed == Math.abs(ySpeed))
+            ySpeed = (Math.abs(ySpeed)+1);
+            else
+                ySpeed = -(Math.abs(ySpeed)+1);
 
-        if(Collision.player1HaveCollided(player,ball)==1){ //1 means to collided on the top half of the paddle
-            xSpeed = 8;
-            ySpeed = -2;
         }
-        else if(Collision.player2HaveCollided(player2,ball)==1){
-            xSpeed = -8;
-            ySpeed = -2;
+        else if(Collision.player2HaveCollided(player2,ball)){
+            xSpeed = -(Math.abs(xSpeed)+1);
+            if(ySpeed == Math.abs(ySpeed))
+                ySpeed = (Math.abs(ySpeed)+1);
+            else
+                ySpeed = -(Math.abs(ySpeed)+1);
         }
-        else if(Collision.player1HaveCollided(player,ball)==2){ //2 means to collided on the top half of the paddle
-            xSpeed = 8;
-            ySpeed = -1;
-        }
-        else if(Collision.player2HaveCollided(player2,ball)==2){
-            xSpeed = -8;
-            ySpeed = 1;
-        }
-        else if(Collision.player1HaveCollided(player,ball)==3){ //3 means to collided on the top half of the paddle
-            xSpeed = 8;
-            ySpeed = 2;
-        }
-        else if(Collision.player2HaveCollided(player2,ball)==3){
-            xSpeed = -8;
-            ySpeed = 2;
-        }
+
 
 
 
@@ -75,14 +67,14 @@ public class GameBall {
             ySpeed = -8;
         }
 
-        if(hitBox.x < 0){ //When P2 scores
+        if(hitBox.x < 0){ //When P2 scores, resets the ball and adds to score
             hitBox.x = 1000;
             hitBox.y = 500;
             ySpeed = 0;
             xSpeed = 0;
             p2Score++;
         }
-        else if(hitBox.x > 2000){ //When P1 scores
+        else if(hitBox.x > 2000){ //When P1 scores, resets the ball and adds to score
             hitBox.x = 1000;
             hitBox.y = 500;
             ySpeed = 0;

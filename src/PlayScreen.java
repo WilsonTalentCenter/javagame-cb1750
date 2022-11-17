@@ -50,10 +50,13 @@ public class PlayScreen extends Screen{
         ball.draw(g);
 
         //draw words example:
-        g.drawString("Player1 score: "+GameBall.p1Score, 500, 20);
-        g.drawString("Player2 score: "+GameBall.p2Score, 1500, 20);
+        Font currentFont = g.getFont();
+        Font newFont = currentFont.deriveFont(currentFont.getSize() * 2.4F);
+        g.setFont(newFont);
         g.setColor(Color.white);
-
+        g.drawString("Player 1's score: "+GameBall.p1Score, 350, 50);
+        g.drawString("Player 2's score: "+GameBall.p2Score, 1350, 50);
+        g.drawString("Press space to start", 850, 50);
     }
 
     @Override
