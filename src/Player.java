@@ -14,7 +14,7 @@ public class Player {
 
 
     public Player(){
-        hitBox = new Rectangle(100,600,25,200);
+        hitBox = new Rectangle(100,450,25,200);
         try {
             sprite = ImageIO.read(new File("src/resources/white.png"));
         } catch (IOException e) {

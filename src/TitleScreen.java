@@ -11,17 +11,20 @@ public class TitleScreen extends MenuScreen{
 
 
     public TitleScreen(){
-        JButton startBtn = new JButton("start");
+        JButton pvpBtn = new JButton("start: player vs player");
+        JButton pvaBtn = new JButton("start: player vs AI");
         JButton optionsBtn = new JButton("options");
         JButton exitBtn = new JButton("exit");
 
         //add action listeners to button
-        startBtn.addActionListener(new ButtonHandler("playScreen"));
+        pvpBtn.addActionListener(new ButtonHandler("pvpScreen"));
+        pvaBtn.addActionListener(new ButtonHandler("pvaScreen"));
         optionsBtn.addActionListener(new ButtonHandler("optionsScreen"));
         exitBtn.addActionListener(new ButtonHandler("exit"));
 
         //add buttons to list of buttons for the screen
-        buttons.add(startBtn);
+        buttons.add(pvpBtn);
+        buttons.add(pvaBtn);
         buttons.add(optionsBtn);
         buttons.add(exitBtn);
 

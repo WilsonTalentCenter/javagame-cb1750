@@ -14,7 +14,7 @@ public class Player2 {
 
 
     public Player2(){
-        hitBox = new Rectangle(1800,600,25,200);
+        hitBox = new Rectangle(1800,450,25,200);
         try {
             sprite = ImageIO.read(new File("src/resources/white.png"));
         } catch (IOException e) {
@@ -22,6 +22,7 @@ public class Player2 {
         }
 
     }
+
 
     public void update(InputManager inputManager){
         //region movement
@@ -64,7 +65,7 @@ public class Player2 {
         g.drawImage(sprite, hitBox.x,hitBox.y,hitBox.width,hitBox.height,null);
 
     }
-    public Rectangle getHitbox(){
+    public Rectangle getHitBox(){
         return hitBox;
     }
 }

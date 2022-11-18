@@ -18,7 +18,8 @@ public class ScreenManager extends JPanel implements KeyListener, ActionListener
         screenMap = new HashMap<>();
         addScreen("titleScreen" , new TitleScreen(),true);
         addScreen("optionsScreen",new OptionsScreen(),false);
-        addScreen("playScreen",new PlayScreen(),false);
+        addScreen("pvpScreen",new PvPScreen(),false);
+        addScreen("pvaScreen",new PvAScreen(),false);
     }
 
     @Override

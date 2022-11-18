@@ -6,6 +6,7 @@ import java.awt.*;
  */
 public class OptionsScreen extends MenuScreen {
     public OptionsScreen() {
+        JButton startBtn = new JButton("start");
         JButton backBtn = new JButton("back");
 
         //add action listeners to button

@@ -1,25 +1,22 @@
-import javafx.scene.input.KeyCode;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
- * Created by dbaker on 1/8/2022.
+ * Created by cb1750 on 11/18/2022.
  */
-public class PlayScreen extends Screen{
+public class PvAScreen extends Screen {
     private Player player;
-    private Player2 player2;
+    private AI ai;
     private GameBall ball;
     private InputManager inputManager;
-    public PlayScreen() {
+
+    public PvAScreen(){
         player = new Player();
-        player2 = new Player2();
+        ai = new AI();
         ball = new GameBall();
-        inputManager = new InputManager(); // holds the state for all of the inputs
-
+        inputManager = new InputManager();
     }
-
     @Override
     public void unload(JPanel panel) {
 
@@ -34,19 +31,17 @@ public class PlayScreen extends Screen{
     public void remove() {
 
     }
-
     @Override
     public void update() {
         inputManager.update();
         player.update(inputManager);
-        player2.update(inputManager);
-        ball.update(inputManager,player,player2,ball);
+        ai.update();
+        ball.pvaUpdate(inputManager,player,ball);
     }
-
     @Override
     public void draw(Graphics g) {
         player.draw(g);
-        player2.draw(g);
+        ai.draw(g);
         ball.draw(g);
 
         //draw words example:
@@ -55,7 +50,7 @@ public class PlayScreen extends Screen{
         g.setFont(newFont);
         g.setColor(Color.white);
         g.drawString("Player 1's score: "+GameBall.p1Score, 350, 50);
-        g.drawString("Player 2's score: "+GameBall.p2Score, 1350, 50);
+        g.drawString("AI's score: "+GameBall.p2Score, 1350, 50);
         g.drawString("Press space to start", 850, 50);
     }
 

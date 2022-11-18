@@ -1,6 +1,3 @@
-import java.awt.*;
-
-
 /**
  * Created by cb1750 on 11/9/2022.
  */
@@ -22,7 +19,7 @@ public class Collision {
 
     }
     public static boolean player2HaveCollided( Player2 player2, GameBall ball){
-        return player2.getHitbox().intersects(ball.getHitBox());
+        return player2.getHitBox().intersects(ball.getHitBox());
 
 
     }
