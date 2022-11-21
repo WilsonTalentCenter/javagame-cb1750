@@ -8,22 +8,25 @@ import java.util.Random;
  * Created by cb1750 on 11/9/2022.
  */
 public class GameBall {
-    private Rectangle hitBox;
+    private static Rectangle hitBox;
     private BufferedImage sprite;
-    static int xSpeed = 0;
-    static int ySpeed = 0;
+    private static int xSpeed;
+     private static int ySpeed;
     static int p1Score = 0;
     static int p2Score = 0;
 
     public GameBall(){
         hitBox = new Rectangle(950,500,50,50);
+
         try {
             sprite = ImageIO.read(new File("src/resources/ball2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void pvaUpdate(InputManager inputManager, Player player, GameBall ball){
+
+    public void pvaUpdate(InputManager inputManager, AI ai, Player player, GameBall ball){
+
         Random rd = new Random();
         //region movement
         if (inputManager.space.isPressed()){ //Moves ball only when a player presses space
@@ -41,7 +44,14 @@ public class GameBall {
             else
                 ySpeed = -(Math.abs(ySpeed)+1);
 
+        }if(Collision.aiHaveCollided(ai,ball)){
+            xSpeed = -(Math.abs(xSpeed)+1);
+            if(ySpeed == Math.abs(ySpeed))
+                ySpeed = (Math.abs(ySpeed)+1);
+            else
+                ySpeed = -(Math.abs(ySpeed)+1);
         }
+
 
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -155,9 +165,11 @@ public class GameBall {
 
     }
 
-    public Rectangle getHitBox(){
+    public static Rectangle getHitBox(){
         return hitBox;
     }
+    public static int getXSpeed(){return xSpeed;}
+    public static int getYSpeed(){return ySpeed;}
 
     public void draw(Graphics g){
         //draw sprite example

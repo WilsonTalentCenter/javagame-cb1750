@@ -23,6 +23,13 @@ public class Collision {
 
 
     }
+    public static boolean aiHaveCollided( AI ai, GameBall ball){
+        return ai.getHitBox().intersects(ball.getHitBox());
+
+
+
+
+    }
 
 
 }

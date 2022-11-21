@@ -6,15 +6,17 @@ import java.awt.event.KeyEvent;
  * Created by cb1750 on 11/18/2022.
  */
 public class PvAScreen extends Screen {
-    private Player player;
+    private  Player player;
     private AI ai;
     private GameBall ball;
+    private GlassBall glassBall;
     private InputManager inputManager;
 
     public PvAScreen(){
         player = new Player();
         ai = new AI();
         ball = new GameBall();
+        glassBall = new GlassBall();
         inputManager = new InputManager();
     }
     @Override
@@ -35,8 +37,10 @@ public class PvAScreen extends Screen {
     public void update() {
         inputManager.update();
         player.update(inputManager);
-        ai.update();
-        ball.pvaUpdate(inputManager,player,ball);
+        ai.update(ai, ball);
+        ball.pvaUpdate(inputManager,ai,player,ball);
+        glassBall.update(player,ball);
+
     }
     @Override
     public void draw(Graphics g) {

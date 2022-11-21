@@ -20,12 +20,39 @@ public class AI {
         }
 
     }
-    public void update(){
+    public void update(AI ai, GameBall ball){
+    int ySpeed = 0;
 
+    if(hitBox.y < GlassBall.yPos){
+        ySpeed = -4;
+    }
+    else if(hitBox.y > GlassBall.xPos){
+        ySpeed = 4;
+    }
+
+
+
+
+        hitBox.y += ySpeed;
+
+
+
+
+        if(hitBox.y<0){
+            hitBox.y=0;
+        }
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height =(int) screenSize.getHeight();
+        if(hitBox.y + hitBox.height > height){
+            hitBox.y = height - hitBox.height;
+        }
     }
     public void draw(Graphics g){
         //draw sprite example
         g.drawImage(sprite, hitBox.x,hitBox.y,hitBox.width,hitBox.height,null);
 
+    }
+    public Rectangle getHitBox(){
+        return hitBox;
     }
 }
