@@ -10,7 +10,7 @@ import java.io.IOException;
 public class AI {
     private Rectangle hitBox;
     private BufferedImage sprite;
-
+    private int ySpeed = 0;
     public AI(){
         hitBox = new Rectangle(1800,450,25,200);
         try {
@@ -21,14 +21,27 @@ public class AI {
 
     }
     public void update(AI ai, GameBall ball){
-    int ySpeed = 0;
 
-    if(hitBox.y < GlassBall.yPos){
-        ySpeed = -4;
-    }
-    else if(hitBox.y > GlassBall.xPos){
+
+    if(hitBox.y < GameBall.getHitBox().y){
         ySpeed = 4;
     }
+    else if(hitBox.y > GameBall.getHitBox().y){
+        ySpeed = -4;
+        }
+    if(GameBall.getHitBox().x < 950 && hitBox.y < 500){
+        ySpeed = 4;
+    }
+    else if(GameBall.getHitBox().x < 950 && hitBox.y > 500){
+        ySpeed = -4;
+    }
+        if(GameBall.bounce  && GameBall.getHitBox().y > 500)    {
+            ySpeed = -4;
+        }
+        else if(GameBall.bounce  && GameBall.getHitBox().y < 500){
+            ySpeed = 4;
+        }
+
 
 
 

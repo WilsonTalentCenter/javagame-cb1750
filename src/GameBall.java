@@ -12,6 +12,7 @@ public class GameBall {
     private BufferedImage sprite;
     private static int xSpeed;
      private static int ySpeed;
+     static boolean bounce = false;
     static int p1Score = 0;
     static int p2Score = 0;
 
@@ -26,14 +27,14 @@ public class GameBall {
     }
 
     public void pvaUpdate(InputManager inputManager, AI ai, Player player, GameBall ball){
-
+        
         Random rd = new Random();
         //region movement
         if (inputManager.space.isPressed()){ //Moves ball only when a player presses space
             if(rd.nextBoolean())
-                xSpeed = 4;
+                xSpeed = 6;
             else
-                xSpeed = -4;
+                xSpeed = -6;
 
         }
         //If there is a collision this makes the ball faster and makes it move toward the other player
@@ -58,12 +59,20 @@ public class GameBall {
         int height =(int) screenSize.getHeight();
 
         if(hitBox.y < 0){
-            ySpeed = 8;
+            bounce = true;
+            ySpeed++;
+        }
+        else{
+            bounce = false;
         }
         //These make sure the ball doesn't leave the screen
         //It just bounces back
         if(hitBox.y + hitBox.height > height){
-            ySpeed = -8;
+            bounce = true;
+            ySpeed = -(Math.abs(ySpeed +1));
+        }
+        else{
+            bounce = false;
         }
 
         if(hitBox.x < 0){ //When P2 scores, resets the ball and adds to score

@@ -1,5 +1,8 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by cb1750 on 11/21/2022.
@@ -13,12 +16,13 @@ public class GlassBall {
     public static int yPos;
     public GlassBall(){
 
-            hitBox = new Rectangle(0,0,50,50);
-            if(GameBall.getYSpeed() == Math.abs(GameBall.getYSpeed()))
-                ySpeed = (Math.abs(GameBall.getYSpeed())+10);
-            else
-                ySpeed = -(Math.abs(GameBall.getYSpeed())+10);
-            xSpeed = -(Math.abs(GameBall.getXSpeed())+10);
+            hitBox = new Rectangle(950,500,50,50);
+        try {
+            sprite = ImageIO.read(new File("src/resources/red.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         }
 
         public void update(Player player, GameBall ball){
@@ -26,11 +30,8 @@ public class GlassBall {
             hitBox.x = GameBall.getHitBox().x;
             hitBox.y = GameBall.getHitBox().y;
 
-            xSpeed = -(Math.abs(xSpeed) + 10);
-            if (ySpeed == Math.abs(ySpeed))
-                ySpeed = (Math.abs(ySpeed) + 10);
-            else
-                ySpeed = -(Math.abs(ySpeed) + 10);
+            xSpeed = GameBall.getXSpeed()*-1;
+            ySpeed = GameBall.getYSpeed();
 
 
         }
@@ -38,20 +39,29 @@ public class GlassBall {
             int height =(int) screenSize.getHeight();
 
             if(hitBox.y < 0){
-                ySpeed = 18;
+                ySpeed = 8;
             }
             //These make sure the ball doesn't leave the screen
             //It just bounces back
             if(hitBox.y + hitBox.height > height){
-                ySpeed = -18;
+                ySpeed = -8;
             }
         if(hitBox.x > 2000 || hitBox.x < 0){
             xPos = hitBox.x;
             yPos = hitBox.y;
         }
+            hitBox.x += xSpeed;
+
+            hitBox.y += ySpeed;
+
 
 
         }
+    public void draw(Graphics g){
+        //draw sprite example
+        g.drawImage(sprite, hitBox.x,hitBox.y,hitBox.width,hitBox.height,null);
+
+    }
 
 
     }

@@ -37,9 +37,10 @@ public class PvAScreen extends Screen {
     public void update() {
         inputManager.update();
         player.update(inputManager);
-        ai.update(ai, ball);
         ball.pvaUpdate(inputManager,ai,player,ball);
         glassBall.update(player,ball);
+        ai.update(ai, ball);
+
 
     }
     @Override
@@ -47,6 +48,7 @@ public class PvAScreen extends Screen {
         player.draw(g);
         ai.draw(g);
         ball.draw(g);
+       // glassBall.draw(g);
 
         //draw words example:
         Font currentFont = g.getFont();
