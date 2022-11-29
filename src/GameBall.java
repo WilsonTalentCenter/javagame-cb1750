@@ -27,7 +27,10 @@ public class GameBall {
     }
 
     public void pvaUpdate(InputManager inputManager, AI ai, Player player, GameBall ball){
-        
+        hitBox.x += xSpeed;
+
+        hitBox.y += ySpeed;
+
         Random rd = new Random();
         //region movement
         if (inputManager.space.isPressed()){ //Moves ball only when a player presses space
@@ -60,7 +63,7 @@ public class GameBall {
 
         if(hitBox.y < 0){
             bounce = true;
-            ySpeed++;
+            ySpeed *=-1;
         }
         else{
             bounce = false;
@@ -69,7 +72,7 @@ public class GameBall {
         //It just bounces back
         if(hitBox.y + hitBox.height > height){
             bounce = true;
-            ySpeed = -(Math.abs(ySpeed +1));
+            ySpeed *= -1;//-(Math.abs(ySpeed +1));
         }
         else{
             bounce = false;
@@ -93,9 +96,6 @@ public class GameBall {
 
 
 
-        hitBox.x += xSpeed;
-
-        hitBox.y += ySpeed;
 
 
 

@@ -39,7 +39,7 @@ public class PvAScreen extends Screen {
         player.update(inputManager);
         ball.pvaUpdate(inputManager,ai,player,ball);
         glassBall.update(player,ball);
-        ai.update(ai, ball);
+        ai.update();
 
 
     }
@@ -48,7 +48,7 @@ public class PvAScreen extends Screen {
         player.draw(g);
         ai.draw(g);
         ball.draw(g);
-       // glassBall.draw(g);
+        glassBall.draw(g);
 
         //draw words example:
         Font currentFont = g.getFont();

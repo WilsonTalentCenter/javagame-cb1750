@@ -20,27 +20,16 @@ public class AI {
         }
 
     }
-    public void update(AI ai, GameBall ball){
+    public void update(){
 
 
-    if(hitBox.y < GameBall.getHitBox().y){
+    if(hitBox.y < GlassBall.getHitBox().y){
         ySpeed = 4;
     }
-    else if(hitBox.y > GameBall.getHitBox().y){
+    else if(hitBox.y > GlassBall.getHitBox().y){
         ySpeed = -4;
         }
-    if(GameBall.getHitBox().x < 950 && hitBox.y < 500){
-        ySpeed = 4;
-    }
-    else if(GameBall.getHitBox().x < 950 && hitBox.y > 500){
-        ySpeed = -4;
-    }
-        if(GameBall.bounce  && GameBall.getHitBox().y > 500)    {
-            ySpeed = -4;
-        }
-        else if(GameBall.bounce  && GameBall.getHitBox().y < 500){
-            ySpeed = 4;
-        }
+
 
 
 

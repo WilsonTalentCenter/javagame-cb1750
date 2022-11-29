@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by dbaker on 1/8/2022.
+ * Created by cb1750 on 1/8/2022.
  */
 public class Player2 {
     private Rectangle hitBox;
