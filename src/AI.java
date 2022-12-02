@@ -26,9 +26,10 @@ public class AI {
     if(hitBox.y < GlassBall.getHitBox().y){
         ySpeed = 4;
     }
-    else if(hitBox.y > GlassBall.getHitBox().y){
+    else if(hitBox.y > GlassBall.getHitBox().y) {
         ySpeed = -4;
-        }
+    }
+
 
 
 

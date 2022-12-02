@@ -41,14 +41,21 @@ public class GameBall {
 
         }
         //If there is a collision this makes the ball faster and makes it move toward the other player
-        if(Collision.player1HaveCollided(player,ball)){
+        if(Collision.player1HaveCollided(player,ball)==0){
             xSpeed = (Math.abs(xSpeed)+1);
-            if(ySpeed == Math.abs(ySpeed))
-                ySpeed = (Math.abs(ySpeed)+1);
-            else
-                ySpeed = -(Math.abs(ySpeed)+1);
+            ySpeed = -(Math.abs(ySpeed)+1);
 
-        }if(Collision.aiHaveCollided(ai,ball)){
+        }
+        if(Collision.player1HaveCollided(player,ball)==1){
+            xSpeed = (Math.abs(xSpeed)+1);
+            ySpeed = Math.abs(ySpeed)+1;
+
+        }
+        if(Collision.player1HaveCollided(player,ball)==2){
+            xSpeed = (Math.abs(xSpeed)+1);
+
+        }
+        if(Collision.aiHaveCollided(ai,ball)){
             xSpeed = -(Math.abs(xSpeed)+1);
             if(ySpeed == Math.abs(ySpeed))
                 ySpeed = (Math.abs(ySpeed)+1);
@@ -72,7 +79,7 @@ public class GameBall {
         //It just bounces back
         if(hitBox.y + hitBox.height > height){
             bounce = true;
-            ySpeed *= -1;//-(Math.abs(ySpeed +1));
+            ySpeed *= -1;
         }
         else{
             bounce = false;
@@ -115,12 +122,14 @@ public class GameBall {
 
         }
         //If there is a collision this makes the ball faster and makes it move toward the other player
-        if(Collision.player1HaveCollided(player,ball)){
+        if(Collision.player1HaveCollided(player,ball)==0){
             xSpeed = (Math.abs(xSpeed)+1);
-            if(ySpeed == Math.abs(ySpeed))
-            ySpeed = (Math.abs(ySpeed)+1);
-            else
-                ySpeed = -(Math.abs(ySpeed)+1);
+            ySpeed = -(Math.abs(ySpeed)+1);
+
+        }
+        if(Collision.player1HaveCollided(player,ball)==1){
+            xSpeed = (Math.abs(xSpeed)+1);
+            ySpeed = Math.abs(ySpeed)+1;
 
         }
         else if(Collision.player2HaveCollided(player2,ball)){
@@ -135,17 +144,19 @@ public class GameBall {
         int height =(int) screenSize.getHeight();
 
         if(hitBox.y < 0){
-            ySpeed = 8;
+            ySpeed *= -1;
         }
         //These make sure the ball doesn't leave the screen
         //It just bounces back
         if(hitBox.y + hitBox.height > height){
-            ySpeed = -8;
+            ySpeed *= -1;
         }
 
         if(hitBox.x < 0){ //When P2 scores, resets the ball and adds to score
             hitBox.x = 1000;
             hitBox.y = 500;
+            GlassBall.getHitBox().x = 950;
+            GlassBall.getHitBox().y = 450;
             ySpeed = 0;
             xSpeed = 0;
             p2Score++;
