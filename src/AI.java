@@ -23,15 +23,12 @@ public class AI {
     public void update(){
 
 
-    if(hitBox.y < GlassBall.getHitBox().y){
+    if(hitBox.y + 25< GlassBall.getHitBox().y){
         ySpeed = 4;
     }
-    else if(hitBox.y > GlassBall.getHitBox().y) {
+    else if(hitBox.y + 25> GlassBall.getHitBox().y) {
         ySpeed = -4;
     }
-
-
-
 
 
 

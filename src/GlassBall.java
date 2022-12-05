@@ -15,7 +15,7 @@ public class GlassBall {
     private static int ySpeed;
     public GlassBall(){
 
-            hitBox = new Rectangle(950,450,50,50);
+            hitBox = new Rectangle(950,500,50,50);
         try {
             sprite = ImageIO.read(new File("src/resources/red.png"));
         } catch (IOException e) {
@@ -27,15 +27,15 @@ public class GlassBall {
         public void update(InputManager inputManager, Player player, GameBall ball){
 
 
-            if(Collision.player1HaveCollided(player,ball) == 0 ||Collision.player1HaveCollided(player,ball) == 1 ||
-                    Collision.player1HaveCollided(player,ball) == 2) {
+            if(Collision.player1HasCollided(player) == 0 ||Collision.player1HasCollided(player) == 1 ||
+                    Collision.player1HasCollided(player) == 2) {
 
                 hitBox.x = GameBall.getHitBox().x;
                 hitBox.y = GameBall.getHitBox().y;
 
 
-                xSpeed = (Math.abs(GameBall.getXSpeed())*3);
-                ySpeed = (GameBall.getYSpeed()*3);
+                xSpeed = (Math.abs(GameBall.getXSpeed())*2);
+                ySpeed = (GameBall.getYSpeed()*2);
 //
             }
 

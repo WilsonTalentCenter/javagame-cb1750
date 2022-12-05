@@ -41,26 +41,33 @@ public class GameBall {
 
         }
         //If there is a collision this makes the ball faster and makes it move toward the other player
-        if(Collision.player1HaveCollided(player,ball)==0){
+        if(Collision.player1HasCollided(player)==0){
             xSpeed = (Math.abs(xSpeed)+1);
             ySpeed = -(Math.abs(ySpeed)+1);
 
         }
-        if(Collision.player1HaveCollided(player,ball)==1){
+        else if(Collision.player1HasCollided(player)==1){
             xSpeed = (Math.abs(xSpeed)+1);
             ySpeed = Math.abs(ySpeed)+1;
 
         }
-        if(Collision.player1HaveCollided(player,ball)==2){
+        else if(Collision.player1HasCollided(player)==2){
             xSpeed = (Math.abs(xSpeed)+1);
+            ySpeed = 0;
+        }
+        if(Collision.aiHasCollided(ai)==0){
+            xSpeed = -(Math.abs(xSpeed)+1);
+            ySpeed = -(Math.abs(ySpeed)+1);
 
         }
-        if(Collision.aiHaveCollided(ai,ball)){
+        else if(Collision.aiHasCollided(ai)==1){
             xSpeed = -(Math.abs(xSpeed)+1);
-            if(ySpeed == Math.abs(ySpeed))
-                ySpeed = (Math.abs(ySpeed)+1);
-            else
-                ySpeed = -(Math.abs(ySpeed)+1);
+            ySpeed = Math.abs(ySpeed)+1;
+
+        }
+        else if(Collision.aiHasCollided(ai)==2){
+            xSpeed = -(Math.abs(xSpeed)+1);
+            ySpeed = 0;
         }
 
 
@@ -116,28 +123,39 @@ public class GameBall {
         //region movement
         if (inputManager.space.isPressed()){ //Moves ball only when a player presses space
                if(rd.nextBoolean())
-                   xSpeed = 4;
+                   xSpeed = 6;
                else
-                   xSpeed = -4;
+                   xSpeed = -6;
 
         }
         //If there is a collision this makes the ball faster and makes it move toward the other player
-        if(Collision.player1HaveCollided(player,ball)==0){
+        if(Collision.player1HasCollided(player)==0){
             xSpeed = (Math.abs(xSpeed)+1);
             ySpeed = -(Math.abs(ySpeed)+1);
 
         }
-        if(Collision.player1HaveCollided(player,ball)==1){
+        else if(Collision.player1HasCollided(player)==1){
             xSpeed = (Math.abs(xSpeed)+1);
             ySpeed = Math.abs(ySpeed)+1;
 
         }
-        else if(Collision.player2HaveCollided(player2,ball)){
+        else if(Collision.player1HasCollided(player)==2){
+            xSpeed = (Math.abs(xSpeed)+1);
+            ySpeed = 0;
+        }
+        if(Collision.player2HasCollided(player2)==0){
             xSpeed = -(Math.abs(xSpeed)+1);
-            if(ySpeed == Math.abs(ySpeed))
-                ySpeed = (Math.abs(ySpeed)+1);
-            else
-                ySpeed = -(Math.abs(ySpeed)+1);
+            ySpeed = -(Math.abs(ySpeed)+1);
+
+        }
+        else if(Collision.player2HasCollided(player2)==1){
+            xSpeed = -(Math.abs(xSpeed)+1);
+            ySpeed = Math.abs(ySpeed)+1;
+
+        }
+        else if(Collision.player2HasCollided(player2)==2){
+            xSpeed = -(Math.abs(xSpeed)+1);
+            ySpeed = 0;
         }
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
